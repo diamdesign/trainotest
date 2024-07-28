@@ -75,6 +75,44 @@ export default function Form({ params }) {
         });
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (formData.title === "" || formData.description === "") {
+            alert("Du måste fylla i alla fält");
+            return;
+        }
+
+        console.log("Submiting form...");
+
+        const saveFormObject = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch("https://traino.nu/test/saveform.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log("Saved", data);
+                // Optionally handle the saved data, e.g., updating the state or showing a success message
+            } catch (error) {
+                console.error("Error saving form data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        saveFormObject();
+    };
+
     return (
         <>
             {loading ? (
@@ -91,7 +129,7 @@ export default function Form({ params }) {
                         </div>
                     )}
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="input-group">
                             <label htmlFor="title">Titel</label>
                             <input
@@ -131,7 +169,7 @@ export default function Form({ params }) {
                             />
                         </div>
 
-                        <button>Skicka</button>
+                        <button type="submit">Skicka</button>
                     </form>
                 </div>
             )}
