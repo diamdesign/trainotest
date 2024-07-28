@@ -102,6 +102,12 @@ button:hover {
     cursor: pointer;
 }
 
+.borderonly {
+    margin-top: 0.5rem;
+    background: transparent;
+    border: 1px solid #5d5d5d;
+}
+
 .checkbox-group {
     display: flex;
     align-items: center;

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "./page.css";
 
@@ -7,6 +8,12 @@ export default function Form({ params }) {
     const [userinfo, setUserinfo] = useState([]);
     const [loading, setLoading] = useState(true);
     const [formData, setFormData] = useState({ title: "", type: "Tränare", description: "", truefalse: false });
+
+    const router = useRouter();
+
+    const handleBack = () => {
+        router.push("/");
+    };
 
     const id = params.id;
 
@@ -177,6 +184,10 @@ export default function Form({ params }) {
 
                             <button type="submit">Skicka</button>
                         </form>
+
+                        <button className="borderonly" onClick={handleBack}>
+                            Tillbaka
+                        </button>
                     </div>
                 </div>
             )}
