@@ -102,7 +102,6 @@ export default function Form({ params }) {
 
                 const data = await response.json();
                 console.log("Saved", data);
-                // Optionally handle the saved data, e.g., updating the state or showing a success message
             } catch (error) {
                 console.error("Error saving form data:", error);
             } finally {
@@ -118,59 +117,65 @@ export default function Form({ params }) {
             {loading ? (
                 <div>Laddar...</div>
             ) : (
-                <div>
-                    {userinfo && userinfo.firstname && (
-                        <div className="userinfo">
-                            <div className="thumbnail">
-                                <Image src={userinfo.thumbnail} width="100" height="100" alt="" />
+                <div id="main">
+                    <div className="box">
+                        {userinfo && userinfo.firstname && (
+                            <div className="userinfo">
+                                <div className="thumbnail">
+                                    <Image src={userinfo.thumbnail} width="100" height="100" alt="" />
+                                </div>
+                                <div className="userdetails">
+                                    <div className="name">{`${userinfo.firstname} ${userinfo.lastname}`}</div>
+                                    <div className="age">{userinfo.age}år</div>
+                                </div>
                             </div>
-                            <div className="name">{`${userinfo.firstname} ${userinfo.lastname}`}</div>
-                            <div className="age">{userinfo.age}år</div>
-                        </div>
-                    )}
+                        )}
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="input-group">
-                            <label htmlFor="title">Titel</label>
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                value={formData.title}
-                                onChange={handleTitleInput}
-                            />
-                        </div>
+                        <form onSubmit={handleSubmit}>
+                            <div className="input-group">
+                                <label htmlFor="title">Titel</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    value={formData.title}
+                                    onChange={handleTitleInput}
+                                />
+                            </div>
 
-                        <div className="input-group">
-                            <label htmlFor="type">Typ</label>
-                            <select id="type" name="type" value={formData.type} onChange={handleTypeSelect}>
-                                <option value="Tränare">Tränare</option>
-                                <option value="Trainee">Trainee</option>
-                            </select>
-                        </div>
+                            <div className="input-group">
+                                <label htmlFor="type">Typ</label>
+                                <select id="type" name="type" value={formData.type} onChange={handleTypeSelect}>
+                                    <option value="Tränare">Tränare</option>
+                                    <option value="Trainee">Trainee</option>
+                                </select>
+                            </div>
 
-                        <div className="input-group">
-                            <label htmlFor="description">Beskrivning</label>
-                            <textarea
-                                name="description"
-                                id="description"
-                                value={formData.description}
-                                onChange={handleTextArea}
-                            ></textarea>
-                        </div>
+                            <div className="input-group">
+                                <label htmlFor="description">Beskrivning</label>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    value={formData.description}
+                                    onChange={handleTextArea}
+                                ></textarea>
+                            </div>
 
-                        <div className="input-group">
-                            <input
-                                type="checkbox"
-                                name="truefalse"
-                                id="truefalse"
-                                value={formData.truefalse}
-                                onChange={handleCheckbox}
-                            />
-                        </div>
+                            <div className="checkbox-group">
+                                <input
+                                    type="checkbox"
+                                    name="truefalse"
+                                    id="truefalse"
+                                    value={formData.truefalse}
+                                    onChange={handleCheckbox}
+                                />
+                                <span className="customcheckbox"></span>
+                                <label htmlFor="truefalse">True/False</label>
+                            </div>
 
-                        <button type="submit">Skicka</button>
-                    </form>
+                            <button type="submit">Skicka</button>
+                        </form>
+                    </div>
                 </div>
             )}
         </>

@@ -1,0 +1,138 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+}
+
+#main {
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    max-width: 25rem;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #2f2f2f;
+}
+
+.userinfo {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    margin-bottom: 1rem;
+}
+
+.thumbnail {
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.age {
+    color: #5d5d5d;
+}
+
+form {
+    width: 100%;
+}
+
+.input-group,
+.checkbox-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+button {
+    padding: 0.8rem;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    background: royalblue;
+    color: white;
+}
+
+button:hover {
+    background: rgb(27, 66, 183);
+    cursor: pointer;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    display: none;
+}
+
+.customcheckbox {
+    width: 2.4rem;
+    height: 1.2rem;
+    background: #252525;
+    border-radius: 10rem;
+    margin-right: 0.5rem;
+    position: relative;
+}
+.customcheckbox:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 10rem;
+    background: rgb(74, 74, 74);
+    content: "";
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked + .customcheckbox:after {
+    left: calc(100% - 1.2rem);
+    background: royalblue;
+}
