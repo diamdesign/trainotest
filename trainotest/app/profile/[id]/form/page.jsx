@@ -162,15 +162,17 @@ export default function Form({ params }) {
                             </div>
 
                             <div className="checkbox-group">
-                                <input
-                                    type="checkbox"
-                                    name="truefalse"
-                                    id="truefalse"
-                                    value={formData.truefalse}
-                                    onChange={handleCheckbox}
-                                />
-                                <span className="customcheckbox"></span>
-                                <label htmlFor="truefalse">True/False</label>
+                                <label htmlFor="truefalse">
+                                    <input
+                                        type="checkbox"
+                                        name="truefalse"
+                                        id="truefalse"
+                                        value={formData.truefalse}
+                                        onChange={handleCheckbox}
+                                    />
+                                    <span className="customcheckbox"></span>
+                                    True/False
+                                </label>
                             </div>
 
                             <button type="submit">Skicka</button>
